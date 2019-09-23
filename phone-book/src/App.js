@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import PhoneForm from './Component/PhoneForm';
+import PhoneInfoList from './Component/PhoneInfoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  id=2
+  state={
+    information:[
+      {
+        id:0,
+        name:'윤성재',
+        phone:'010-1234-5678'
+      },
+      {
+        id:1,
+        name:'위연정',
+        phone:'010-5555-6666'
+      }
+    ]
+  }
+
+  handleCreate = (data) =>{
+    const {information} = this.state;
+    this.setState({
+      information: information.concat({id:this.id++, ...data})
+    })
+  }
+
+  render(){
+    return (
+      <div>
+        <PhoneForm 
+          onCreate={this.handleCreate}
+        />
+        <PhoneInfoList data={this.state.information}/>
+      </div>
+    );
+  }
 }
 
 export default App;
