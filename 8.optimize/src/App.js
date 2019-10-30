@@ -11,6 +11,7 @@ const App=()=> {
     { id: 2, text: '리액트 2장 공부하기', checked: true },
     { id: 3, text: '리액트 3장 공부하기', checked: true }
   ]);
+  
   const nextId=useRef(4);
 
   const onInsert= useCallback(
